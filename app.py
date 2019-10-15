@@ -7,7 +7,7 @@ users = db.users
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/workout')
 def index():
     return render_template('homepage.html', msg = 'Welcome!')
 
@@ -17,8 +17,13 @@ def create_user():
 
 @app.route('/workout/new_user', methods = ['POST'])
 def submit_user():
-    print(request.form.to_dict())
-    return redirect(url_for('homepage.html'))
+    user = {
+        'name': request.form.get('name'),
+        'username': request.form.get('username'),
+        'password': request.form.get('password')
+    }
+    users.insert_one(user)
+    return redirect(url_for('create_user'))
 
 
 if __name__ == '__main__':
