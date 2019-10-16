@@ -16,14 +16,32 @@ logs = db.logs
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
-logs = [
-    { 'name': 'Bench Press', 'sets': '4', 'reps': '10', 'weight': '225 lbs' },
-    { 'name': 'Squat', 'sets': '4', 'reps': '8', 'weight': '315 lbs' },
-]
+# logs = [
+#     { 'name': 'Bench Press', 'sets': '4', 'reps': '10', 'weight': '225 lbs' },
+#     { 'name': 'Squat', 'sets': '4', 'reps': '8', 'weight': '315 lbs' },
+# ]
 
-@app.route('/logs')
+@app.route('/')
 def logs_index():
-    return render_template('logs_index.html', logs=logs)
+    return render_template('logs_index.html', logs=logs.find())
+
+@app.route('/logs/new')
+def logs_new():
+    return render_template('logs_new.html')
+
+@app.route('/logs', methods=['POST'])
+def playlists_submit():
+    log = {
+        'name': request.form.get('name'),
+        'sets': request.form.get('sets'),
+        'reps': request.form.get('reps'),
+        'weight': request.form.get('weight')
+    }
+    logs.insert_one(log)
+    return redirect(url_for('logs_index'))
+
+
+
 @app.route('/workout')
 def user_index():
     return render_template('homepage.html')

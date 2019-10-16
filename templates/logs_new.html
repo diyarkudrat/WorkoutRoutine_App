@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/logs'>
+    <fieldset>
+        <legend>New Log</legend>
+        <!-- TITLE -->
+        <p>
+            <label for='log-name'>Name</label><br>
+            <input id='log-name' type='text' name='name' />
+        </p>
+
+        <!-- DESCRIPTION -->
+        <p>
+            <label for='log-sets'>Sets</label><br>
+            <input id='log-sets' type='text' name='sets' />
+        </p>
+
+
+        <p>
+            <label for='log-reps'>Reps</label><br>
+            <input id='log-reps' type='text' name='reps' />
+        </p>
+        <p>
+            <label for='log-weight'>Weight</label><br>
+            <input id='log-weight' type='text' name='weight' />
+        </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Exercise</button>
+    </p>
+</form>
+{% endblock %}
