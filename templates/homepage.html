@@ -7,4 +7,10 @@
 
     <a href='/workout/create_account'>Create Account</a>
 
+    {% for user in users %}
+        <h2>{{ user.username }}</h2>
+        <small>{{ user.name }}</h2>
+    {% endfor %}
+
+
 {% endblock %}

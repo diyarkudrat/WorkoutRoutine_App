@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/workout/login'>
+    <fieldset>
+
+    <h1>Login</h1>
+
+    <p>
+        <label for='username'><b>Username<b></label><br>
+        <input type='text' placeholder='Enter Username' name='username' required>
+    </p>
+
+    <p>
+        <label for="password"><b>Password</b></label><br>
+        <input type="password" placeholder="Enter Password" name="password" required>
+
+    </p>
+
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Enter</button>
+    </p>
+</form>
+{% endblock %}

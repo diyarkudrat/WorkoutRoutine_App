@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Logs</h1><br>
+    {% for log in logs %}
+        <h2>{{ log.name }}</h2>
+        <small>{{ log.sets }}</small><br>
+        <small>{{ log.reps }}</small>
+    {% endfor %}
+{% endblock %}
