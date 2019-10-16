@@ -30,15 +30,20 @@ def logs_new():
     return render_template('logs_new.html')
 
 @app.route('/logs', methods=['POST'])
-def playlists_submit():
+def logs_submit():
     log = {
         'name': request.form.get('name'),
         'sets': request.form.get('sets'),
         'reps': request.form.get('reps'),
         'weight': request.form.get('weight')
     }
-    logs.insert_one(log)
-    return redirect(url_for('logs_index'))
+    log_id = logs.insert_one(log).inserted_id
+    return redirect(url_for('logs_show', log_id=log_id))
+
+@app.route('/logs/<log_id>')
+def logs_show(log_id):
+    log = logs.find_one({'_id': ObjectId(log_id)})
+    return render_template('logs_show.html', log=log)
 
 
 

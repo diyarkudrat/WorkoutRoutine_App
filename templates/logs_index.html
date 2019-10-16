@@ -3,10 +3,10 @@
 {% block content %}
     <h1>Logs</h1><br>
 
-    <a href='/logs/new'>New Log</a> 
+    <a href='/logs/new'>New Log</a>
 
     {% for log in logs %}
-        <h2>{{ log.name }}</h2>
+        <h2><a href='/logs/{{ log._id }}'>{{ log.name }}</a></h2>
         <small>{{ log.sets }}</small><br>
         <small>{{ log.reps }}</small>
     {% endfor %}
