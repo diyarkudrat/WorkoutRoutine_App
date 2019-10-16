@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/logs/{{log._id}}'>
+
+    {% include 'partials/logs_form.html' %}
+    
+</form>
+{% endblock %}

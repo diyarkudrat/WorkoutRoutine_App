@@ -27,7 +27,7 @@ def logs_index():
 
 @app.route('/logs/new')
 def logs_new():
-    return render_template('logs_new.html')
+    return render_template('logs_new.html', log = {}, title = 'New Log')
 
 @app.route('/logs', methods=['POST'])
 def logs_submit():
@@ -44,6 +44,24 @@ def logs_submit():
 def logs_show(log_id):
     log = logs.find_one({'_id': ObjectId(log_id)})
     return render_template('logs_show.html', log=log)
+
+@app.route('/logs/<log_id>/edit')
+def logs_edit(log_id):
+    log = logs.find_one({'_id': ObjectId(log_id)})
+    return render_template('logs_edit.html', log=log, title = 'Edit Log')
+
+@app.route('/logs/<log_id>', methods=['POST'])
+def logs_update(log_id):
+    updated_log = {
+        'name': request.form.get('name'),
+        'sets': request.form.get('sets'),
+        'reps': request.form.get('reps'),
+        'weight': request.form.get('weight')
+    }
+    logs.update_one(
+        {'_id': ObjectId(log_id)},
+        {'$set': updated_log})
+    return redirect(url_for('logs_show', log_id=log_id))
 
 
 
