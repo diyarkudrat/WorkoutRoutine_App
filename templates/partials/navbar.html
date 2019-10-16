@@ -1,24 +1,23 @@
-<nav class='navbar navbar-default'>
-    <div class='container-fluid'>
-        <div class='navbar-header'>
-            <a class='navbar-brand' href='/workout'>
-                Workout App
-            </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/workout">Workout App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Logs <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Rehab Exercises
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/workout/chest">Chest</a>
+          <a class="dropdown-item" href="/workout/arms">Arms</a>
+          <a class="dropdown-item" href="/workout/shoulders">Shoulders</a>
+          <a class="dropdown-item" href="/workout/legs">Legs</a>
+          <a class="dropdown-item" href="/workout/back">Back</a>
         </div>
-        <div class='pull-right'>
-            <a href='/workout/login' class='btn btn-default navbar-btn'>Login</a>
-            <a href='/workout/create_user' class='btn btn-default navbar-btn'>New User</a>
-        </div>
-        <div class='pull-left'>
-            <ul class="navbar-nav mr-auto">
-              <a href='/' class='btn btn-default navbar-btn'>Logs</a>
-            <a href='/workout/chest' class='btn btn-default navbar-btn'>Chest</a>
-            <a href='/workout/arms' class='btn btn-default navbar-btn'>Arms</a>
-            <a href='/workout/shoulders' class='btn btn-default navbar-btn'>Shoulders</a>
-            <a href='/workout/legs' class='btn btn-default navbar-btn'>Legs</a>
-            <a href='/workout/back' class='btn btn-default navbar-btn'>Back</a>
-            <a href='/' class='btn btn-default navbar-btn'>Custom</a>
-        </div>
-    </div>
-
+      </li>
 </nav>

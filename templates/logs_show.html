@@ -4,11 +4,14 @@
 
 <a href='/'>Back to Logs</a>
 
-<h1>{{ log.name }}</h1>
+<h1>{{ log.date }}</h1>
+<h2>{{ log.body_part }}</h2>
+<h2>{{ log.time_length }}</h2>
 
-<h3>Sets: {{ log.sets }}</h3>
-<h3>Reps: {{ log.reps }}</h3>
-<h3>Weight: {{ log.weight }}</h3>
+<h3>{{ log.name }}</h3>
+<h6>Sets: {{ log.sets }}</h6>
+<h6>Reps: {{ log.reps }}</h6>
+<h6>Weight: {{ log.weight }}</h6>
 
 <p><a href='/logs/{{ log._id }}/edit'>Edit</a></p>
 

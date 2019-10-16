@@ -3,7 +3,56 @@
 {% block content %}
 <form method='POST' action='/logs/{{log._id}}'>
 
-    {% include 'partials/logs_form.html' %}
-    
+  <fieldset>
+      <legend>New Log</legend>
+      <!-- TITLE -->
+      <p>
+          <label for='log-date'>Date</label><br>
+          <input id='log-date' type='text' name='date' value='{{ log.date }}' />
+      </p>
+
+      <!-- DESCRIPTION -->
+      <p>
+          <label for='log-body_part'>Body Part</label><br>
+          <input id='log-body_part' type='text' name='body_part' value='{{ log.body_part }}' />
+      </p>
+
+
+      <p>
+          <label for='log-time_length'>Time Length</label><br>
+          <input id='log-time_length' type='text' name='time_length' value='{{ log.time_length }}' />
+      </p>
+      <div id='wrapper'>
+      <div>
+      <p>
+          <label for='log-name'>1. Name of Exercise</label><br>
+          <input id='log-name' type='text' name='name' value='{{ log.name }}' />
+      </p>
+      <p>
+          <label for='log-sets'>Sets</label><br>
+          <input id='log-sets' type='text' name='sets' value='{{ log.sets}}' />
+      </p>
+      <p>
+          <label for='log-reps'>Reps</label><br>
+          <input id='log-reps' type='text' name='reps' value='{{ log.reps }}' />
+      </p>
+      <p>
+          <label for='log-weight'>Weight</label><br>
+          <input id='log-weight' type='text' name='weight' value='{{ log.weight }}' />
+      </p>
+      </div>
+      </div>
+      <p>
+      <button id='repeat' type='submit' onclick="return addWorkout(e)">+</button>
+      </p>
+  </fieldset>
+
+  <!-- BUTTON -->
+  <p>
+      <button type='submit'>Save Exercise</button>
+  </p>
+
 </form>
+
+<script src="{{ url_for('static', filename='repeat.js') }}"></script>
 {% endblock %}

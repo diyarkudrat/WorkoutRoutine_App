@@ -32,6 +32,9 @@ def logs_new():
 @app.route('/logs', methods=['POST'])
 def logs_submit():
     log = {
+        'date': request.form.get('date'),
+        'body_part': request.form.get('body_part'),
+        'time_length': request.form.get('time_length'),
         'name': request.form.get('name'),
         'sets': request.form.get('sets'),
         'reps': request.form.get('reps'),
@@ -53,6 +56,9 @@ def logs_edit(log_id):
 @app.route('/logs/<log_id>', methods=['POST'])
 def logs_update(log_id):
     updated_log = {
+        'date': request.form.get('date'),
+        'body_part': request.form.get('body_part'),
+        'time_length': request.form.get('time_length'),
         'name': request.form.get('name'),
         'sets': request.form.get('sets'),
         'reps': request.form.get('reps'),
@@ -94,34 +100,34 @@ def legs():
 def back():
     return render_template('back.html')
 
-@app.route('/workout/create_user')
-def create_user():
-    return render_template('create_account.html')
-
-@app.route('/workout/new_user', methods = ['GET','POST'])
-def register():
-    user = {
-        'name': request.form.get('name'),
-        'username': request.form.get('username'),
-        'password': request.form.get('password')
-    }
-    users.insert_one(user)
-    return redirect(url_for('user_index'))
-
-@app.route('/workout/login', methods=['POST', 'GET'])
-def login():
-    if request.method == 'POST':
-        login_user = users.find_one({'username': request.form['username']})
-        if login_user:
-                data = {
-                    'username': request.form['username'],
-                    'user_id': login_user['_id']
-                }
-
-                session['user'] = json.loads(json_util.dumps(data))
-                return redirect(url_for('user_index'))
-
-    return render_template('login.html')
+# @app.route('/workout/create_user')
+# def create_user():
+#     return render_template('create_account.html')
+#
+# @app.route('/workout/new_user', methods = ['GET','POST'])
+# def register():
+#     user = {
+#         'name': request.form.get('name'),
+#         'username': request.form.get('username'),
+#         'password': request.form.get('password')
+#     }
+#     users.insert_one(user)
+#     return redirect(url_for('user_index'))
+#
+# @app.route('/workout/login', methods=['POST', 'GET'])
+# def login():
+#     if request.method == 'POST':
+#         login_user = users.find_one({'username': request.form['username']})
+#         if login_user:
+#                 data = {
+#                     'username': request.form['username'],
+#                     'user_id': login_user['_id']
+#                 }
+#
+#                 session['user'] = json.loads(json_util.dumps(data))
+#                 return redirect(url_for('user_index'))
+#
+#     return render_template('login.html')
 
 
 
