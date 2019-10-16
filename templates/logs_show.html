@@ -12,4 +12,8 @@
 
 <p><a href='/logs/{{ log._id }}/edit'>Edit</a></p>
 
+<p><form method='POST' action='/logs/{{ log._id }}/delete'>
+    <button type='submit'>Delete</button>
+</form><p>
+
 {% endblock %}

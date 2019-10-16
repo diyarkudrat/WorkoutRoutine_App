@@ -63,6 +63,11 @@ def logs_update(log_id):
         {'$set': updated_log})
     return redirect(url_for('logs_show', log_id=log_id))
 
+@app.route('/logs/<log_id>/delete', methods=['POST'])
+def logs_delete(log_id):
+    logs.delete_one({'_id': ObjectId(log_id)})
+    return redirect(url_for('logs_index'))
+
 
 
 @app.route('/workout')
