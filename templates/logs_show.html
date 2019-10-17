@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<a href='/'>Back to Logs</a>
+<a class="btn btn-secondary" href="/" role="button">Back to Logs</a>
 
 <h1>{{ log.date }}</h1>
 <h2>{{ log.body_part }}</h2>
@@ -11,12 +11,12 @@
 <h3>{{ log.name }}</h3>
 <h6>Sets: {{ log.sets }}</h6>
 <h6>Reps: {{ log.reps }}</h6>
-<h6>Weight: {{ log.weight }}</h6>
+<h6>Weight: {{ log.weight }}</h6><br>
 
-<p><a href='/logs/{{ log._id }}/edit'>Edit</a></p>
+<a class="btn btn-secondary" href='/logs/{{ log._id }}/edit' role='button'>Edit</a>
 
 <p><form method='POST' action='/logs/{{ log._id }}/delete'>
-    <button type='submit'>Delete</button>
+    <button class='btn btn-secondary' role='button' type='submit'>Delete</button>
 </form><p>
 
 {% endblock %}

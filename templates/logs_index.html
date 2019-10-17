@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Logs</h1><br>
+    <h1 class="text-white">Logs</h1><br>
 
-    <a href='/logs/new'>New Log</a>
+    <a class="btn btn-light" href="/logs/new" role="button">New Log</a>
+
+
+    <body background="https://media.istockphoto.com/photos/gray-background-black-backgroundsilver-illustrated-background-picture-id908632602?k=6&m=908632602&s=612x612&w=0&h=bxkXj99KAmvRvP9k1S7SoeR5rPfquUFHu2QlmdVM7LY="></body>
 
     {% for log in logs %}
-        <div class="card text-center" style="width: 18 rem;">
+        <div class="card text-center">
+          <div class="card-header">
+            Workout Log
+          </div>
           <div class="card-body">
             <h2 class="card-title"><a href='/logs/{{ log._id }}'>{{ log.date }}</a></h2>
-            <small class="card-text">{{ log.body_part }}</small><br>
-            <small class="card-text">{{ log.time_length }}</small><br>
+            <p class="card-text">{{ log.body_part }}</p>
+            <p class="card-text">{{ log.time_length }}</p>
             <a href="/logs/{{ log._id }}" class="btn btn-primary">View</a>
           </div>
         </div>
+        <br>
     {% endfor %}
 {% endblock %}
