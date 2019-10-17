@@ -4,20 +4,15 @@ from bson.objectid import ObjectId
 import os
 
 
-host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/')
-client = MongoClient(host=f'{host}?retryWrites=false')
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Playlister')
+client = MongoClient(host=host)
 db = client.get_default_database()
-users = db.users
 logs = db.logs
 
 app = Flask(__name__)
 
-# logs = [
-#     { 'name': 'Bench Press', 'sets': '4', 'reps': '10', 'weight': '225 lbs' },
-#     { 'name': 'Squat', 'sets': '4', 'reps': '8', 'weight': '315 lbs' },
-# ]
 
-@app.route('/')
+@app.route('/logs')
 def logs_index():
     return render_template('logs_index.html', logs=logs.find())
 
@@ -72,7 +67,7 @@ def logs_delete(log_id):
 
 
 
-@app.route('/workout')
+@app.route('/')
 def user_index():
     return render_template('homepage.html')
 
