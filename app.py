@@ -6,15 +6,14 @@ from bson.json_util import loads, dumps
 from bson.objectid import ObjectId
 import os
 
-SECRET_KEY = os.getenv('SECRET_KEY')
 
-client = MongoClient()
-db = client.User
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/')
+client = MongoClient(host=f'{host}?retryWrites=false')
+db = client.get_default_database()
 users = db.users
 logs = db.logs
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = SECRET_KEY
 
 # logs = [
 #     { 'name': 'Bench Press', 'sets': '4', 'reps': '10', 'weight': '225 lbs' },
@@ -145,4 +144,4 @@ def back():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
