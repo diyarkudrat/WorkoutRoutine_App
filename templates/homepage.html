@@ -1,16 +1,39 @@
-<!-- templates/home.html -->
 {% extends 'base.html' %}
 
 {% block content %}
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+body {font-family: "Open Sans"}
+</style>
+<body class="w3-light-grey">
 
-    <h1>{{ msg }}</h1>
 
-    <a href='/workout/create_account'>Create Account</a>
+<div class="w3-content" style="max-width:1600px">
 
-    {% for user in users %}
-        <h2>{{ user.username }}</h2>
-        <small>{{ user.name }}</h2>
-    {% endfor %}
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>Welcome</b></h1>
+    <h6><span class="w3-tag">A platform where you can log all your workouts</span></h6>
+  </header>
 
+  <!-- Image header -->
+  <header class="w3-display-container w3-wide" id="home">
+    <img class="w3-image" src="https://yorkbarbell.com/wp-content/uploads/2017/02/Plates-bw.jpg " width="1600" height="1040">
+    <div class="w3-display-left w3-padding-large">
+      <h1 class="w3-jumbo w3-text-white w3-hide-small"><b>LiftHub</b></h1>
+      <div class="w3-container">
+        <a href="/" class="w3-btn w3-black">Workout Logs</a>
+      </div>
+    </div>
+  </header>
 
 {% endblock %}
