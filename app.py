@@ -11,15 +11,17 @@ logs = db.logs
 
 app = Flask(__name__)
 
-
+#route for user logs
 @app.route('/logs')
 def logs_index():
     return render_template('logs_index.html', logs=logs.find())
 
+#route for user to create new log
 @app.route('/logs/new')
 def logs_new():
     return render_template('logs_new.html', log = {}, title = 'New Log')
 
+#submit created log into database
 @app.route('/logs', methods=['POST'])
 def logs_submit():
     log = {
@@ -34,16 +36,19 @@ def logs_submit():
     log_id = logs.insert_one(log).inserted_id
     return redirect(url_for('logs_show', log_id=log_id))
 
+#route to show single log
 @app.route('/logs/<log_id>')
 def logs_show(log_id):
     log = logs.find_one({'_id': ObjectId(log_id)})
     return render_template('logs_show.html', log=log)
 
+#Edit a single log
 @app.route('/logs/<log_id>/edit')
 def logs_edit(log_id):
     log = logs.find_one({'_id': ObjectId(log_id)})
     return render_template('logs_edit.html', log=log, title = 'Edit Log')
 
+#Sends updated info to database
 @app.route('/logs/<log_id>', methods=['POST'])
 def logs_update(log_id):
     updated_log = {
@@ -60,33 +65,39 @@ def logs_update(log_id):
         {'$set': updated_log})
     return redirect(url_for('logs_show', log_id=log_id))
 
+#Delete a single log
 @app.route('/logs/<log_id>/delete', methods=['POST'])
 def logs_delete(log_id):
     logs.delete_one({'_id': ObjectId(log_id)})
     return redirect(url_for('logs_index'))
 
 
-
+#Homepage route
 @app.route('/')
 def user_index():
     return render_template('homepage.html')
 
+#Chest exercises route
 @app.route('/workout/chest')
 def chest():
     return render_template('chest.html')
 
+#Arms exercises route
 @app.route('/workout/arms')
 def arms():
     return render_template('arms.html')
 
+#Shoulders exercises route
 @app.route('/workout/shoulders')
 def shoulders():
     return render_template('shoulders.html')
 
+#Legs exercises route
 @app.route('/workout/legs')
 def legs():
     return render_template('legs.html')
 
+#Back exercises route
 @app.route('/workout/back')
 def back():
     return render_template('back.html')
@@ -119,19 +130,6 @@ def back():
 #                 return redirect(url_for('user_index'))
 #
 #     return render_template('login.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
