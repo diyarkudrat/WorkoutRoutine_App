@@ -3,12 +3,14 @@
 {% block content %}
     <h1 class="text-white">Logs</h1><br>
 
+    <!-- Bootstrap button to create new log -->
     <a class="btn btn-light" href="/logs/new" role="button">New Log</a>
 
-
+    <!-- Background photo -->
     <body background="https://media.istockphoto.com/photos/gray-background-black-backgroundsilver-illustrated-background-picture-id908632602?k=6&m=908632602&s=612x612&w=0&h=bxkXj99KAmvRvP9k1S7SoeR5rPfquUFHu2QlmdVM7LY="></body>
 
     {% for log in logs %}
+        <!-- Boostrap cards -->
         <div class="card text-center">
           <div class="card-header">
             Workout Log

@@ -11,13 +11,13 @@
           <input id='log-date' type='text' name='date' value='{{ log.date }}' />
       </p>
 
-      <!-- DESCRIPTION -->
+      <!-- Body Part -->
       <p>
           <label for='log-body_part'>Body Part</label><br>
           <input id='log-body_part' type='text' name='body_part' value='{{ log.body_part }}' />
       </p>
 
-
+      <!-- Time Length -->
       <p>
           <label for='log-time_length'>Time Length</label><br>
           <input id='log-time_length' type='text' name='time_length' value='{{ log.time_length }}' />
@@ -42,6 +42,8 @@
       </p>
       </div>
       </div>
+
+      <!-- Plus button to add new exercise -->
       <p>
       <button id='repeat' type='submit' onclick="return addWorkout(e)">+</button>
       </p>
@@ -54,5 +56,6 @@
 
 </form>
 
+<!-- import .js file for the plus button -->
 <script src="{{ url_for('static', filename='repeat.js') }}"></script>
 {% endblock %}
